@@ -1,7 +1,7 @@
 # React JS Code Snippets
 
 ### What will the following component output?
-#### Function gets called being every time the component renders.
+#### Function gets called every time the component renders.
 `onClick={incrementCount()}` should be changed to `onClick={incrementCount}` in order for the component to work properly.
 Make sure you aren’t calling the function when you pass it to the component. Instead, pass the function itself (without parens)
 ```
