@@ -1,4 +1,4 @@
-# React JS Code Snippets
+# React JS Core Concepts With Example Code
 
 ### What will the following component output?
 #### Function gets called every time the component renders.
