@@ -1,5 +1,35 @@
 # React JS Core Concepts With Example Code
 
+### Key prop can't be passed to child component with prop name `key`
+```
+const List = ({ users }) => (
+  <ul>
+    {users.map(user => <Item key={user.id}>{user.name}</Item>)}
+  </ul>
+);
+
+const Item = ({ key, children }) => (
+  <p>{key} {children}</p>
+);
+```
+You will also see a warning in your developer console log: "... key is not a prop. Trying to access it will result in undefined being returned. In this case, you have to pass a second prop when you want to get the key from the props.
+The workaround to pass props (e.g. key) which are internally used by React and not passed to the child components.
+```
+const List = ({ users }) => (
+  <ul>
+    {users.map(user => (
+      <Item key={user.id} id={user.id}>
+        {user.name}
+      </Item>
+    ))}
+  </ul>
+);
+
+const Item = ({ id, children }) => (
+  <p>{id} {children}</p>
+);
+```
+
 ### What will the following component output?
 #### Function gets called every time the component renders.
 `onClick={incrementCount()}` should be changed to `onClick={incrementCount}` in order for the component to work properly.
