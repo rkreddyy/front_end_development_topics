@@ -1,3 +1,6 @@
 - [JavaScript fundamentals before learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements/)
 - [React Styled Components Tutorial](https://www.robinwieruch.de/react-styled-components/)
 - [React Higher-Order Components (HOCs)](https://www.robinwieruch.de/react-higher-order-components/)
+- [React Render Props/Composition](https://www.robinwieruch.de/react-render-props/)
+- [How to use Props in React](https://www.robinwieruch.de/react-pass-props-to-component/)
+- 
