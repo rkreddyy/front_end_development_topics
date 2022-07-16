@@ -54,11 +54,11 @@ const App = () => {
   const [count, setCount] = React.useState(0);
 
   const handleIncrease = () => {
-    setTimeout(() => setCount(state => state + 1), 1000);
+    `setTimeout(() => setCount(state => state + 1), 1000);`
   };
 
   const handleDecrease = () => {
-    setTimeout(() => setCount(state => state - 1), 1000);
+    `setTimeout(() => setCount(state => state - 1), 1000);`
   };
 
   return (
