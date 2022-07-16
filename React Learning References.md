@@ -1,4 +1,5 @@
 - [JavaScript fundamentals before learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements/)
+- [How to CSS Style in React](https://www.robinwieruch.de/react-css-styling/)
 - [React Styled Components Tutorial](https://www.robinwieruch.de/react-styled-components/)
 - [React Higher-Order Components (HOCs)](https://www.robinwieruch.de/react-higher-order-components/)
   - Higher-Order Components take any React component as input component and return an enhanced version of it as output component (Higher Order Component => EnhancedComponent).
