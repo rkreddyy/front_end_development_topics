@@ -80,4 +80,133 @@ const Welcome = (props) => {
 // Message prints title "React"
 ```
 
+### What will the following component output?
+The children prop in React can be used for composing React components into each other. Because of this feature, you can put JavaScript primitives or JSX between the opening and closing element's tags:
+```
+import * as React from 'react';
+
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div>
+      <Button onClick={() => setCount(count + 1)}>
+        {count}
+      </Button>
+    </div>
+  );
+};
+
+const Button = ({ onClick, children }) => (
+  <button onClick={onClick}>{children}</button>
+);
+
+export default App;
+```
+
+### HOW TO PASS COMPONENTS AS PROPS
+```
+const User = ({ user }) => (
+  <Profile user={user}>
+    <AvatarRound user={user} />
+  </Profile>
+);
+
+const Profile = ({ user, children }) => (
+  <div className="profile">
+    <div>{children}</div>
+    <div>
+      <p>{user.name}</p>
+    </div>
+  </div>
+);
+
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+```
+
+However, what if you want to pass more than one React element and place them at different positions? Then again you don't need to use the children prop, because you have only one of them, and instead you just use regular props:
+```
+const User = ({ user }) => (
+  <Profile
+    user={user}
+    avatar={<AvatarRound user={user} />}
+    biography={<BiographyFat user={user} />}
+  />
+);
+
+const Profile = ({ user, avatar, biography }) => (
+  <div className="profile">
+    <div>{avatar}</div>
+    <div>
+      <p>{user.name}</p>
+      {biography}
+    </div>
+  </div>
+);
+
+const AvatarRound = ({ user }) => (
+  <img className="round" alt="avatar" src={user.avatarUrl} />
+);
+
+const BiographyFat = ({ user }) => (
+  <p className="fat">{user.biography}</p>
+);
+```
+
+### CHILDREN AS A FUNCTION
+#### [React Render Props](https://www.robinwieruch.de/react-render-props/)
+The concept of children as a function or child as a function, also called render prop, is one of the advanced patterns in React (next to higher-order components). The components which implement this pattern can be called render prop components.
+
+First, let's start with the render prop. Basically it is a function passed as prop. The function receives parameters (in this case the amount), but also renders JSX (in this case the components for the currency conversion).
+
+```
+import * as React from 'react';
+
+const App = () => (
+  <div>
+    <h1>US Dollar to Euro:</h1>
+    <Amount toCurrency={(amount) => <Euro amount={amount} />} />
+
+    <h1>US Dollar to Pound:</h1>
+    <Amount toCurrency={(amount) => <Pound amount={amount} />} />
+  </div>
+);
+
+const Amount = ({ toCurrency }) => {
+  const [amount, setAmount] = React.useState(0);
+
+  const handleIncrement = () => setAmount(amount + 1);
+  const handleDecrement = () => setAmount(amount - 1);
+
+  return (
+    <div>
+      <button type="button" onClick={handleIncrement}>
+        +
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        -
+      </button>
+
+      <p>US Dollar: {amount}</p>
+      {toCurrency(amount)}
+    </div>
+  );
+};
+
+const Euro = ({ amount }) => <p>Euro: {amount * 0.86}</p>;
+
+const Pound = ({ amount }) => <p>Pound: {amount * 0.76}</p>;
+
+export default App;
+```
+
+
+
+
+
+
+
+
 
