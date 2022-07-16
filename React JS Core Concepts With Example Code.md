@@ -16,6 +16,71 @@ Most native React form components support both controlled and uncontrolled usage
 // Use `inputRef.current.value` to read the current value of <input>
 ```
 
+### ASYNCHRONOUS STATE IN REACT
+##### What happens if you are dependent on actual state to update the state?
+```
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  const handleIncrease = () => {
+    setTimeout(() => setCount(count + 1), 1000);
+  };
+
+  const handleDecrease = () => {
+    setTimeout(() => setCount(count - 1), 1000);
+  };
+
+  return (
+    <div>
+      Count: {count}
+      <hr />
+      <div>
+        <button type="button" onClick={handleIncrease}>
+          Increase
+        </button>
+        <button type="button" onClick={handleDecrease}>
+          Decrease
+        </button>
+      </div>
+    </div>
+  );
+};
+```
+Every time you click on one of the buttons, the state update function is called with a delay of one second. That works for a single click. However, try to click one of the buttons multiple times in a row. The state update function will always operate on the same state (here: count) within this one second. In order to fix this problem, you can pass a function to the state update function from useState:
+```
+import React from 'react';
+
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  const handleIncrease = () => {
+    setTimeout(() => setCount(state => state + 1), 1000);
+  };
+
+  const handleDecrease = () => {
+    setTimeout(() => setCount(state => state - 1), 1000);
+  };
+
+  return (
+    <div>
+      Count: {count}
+      <hr />
+      <div>
+        <button type="button" onClick={handleIncrease}>
+          Increase
+        </button>
+        <button type="button" onClick={handleDecrease}>
+          Decrease
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+```
+The function offers you the state at the time of executing the function. This way, you never operate on any stale state. Therefore a good rule of thumb may be: Always use a function in useState's update function if your state update depends on your previous state.
+
 ### Key prop can't be passed to child component with prop name `key`
 ```
 const List = ({ users }) => (
