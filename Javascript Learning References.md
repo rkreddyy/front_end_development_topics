@@ -1,0 +1,1 @@
+- [Setup modern JS projects](https://www.robinwieruch.de/javascript-project-setup-tutorial/)
