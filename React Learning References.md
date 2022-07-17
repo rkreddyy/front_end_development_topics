@@ -24,6 +24,7 @@ Most native React form components support both controlled and uncontrolled usage
 - [How to useState in React](https://www.robinwieruch.de/react-usestate-hook/)
 - [How to useEffect in React](https://www.robinwieruch.de/react-useeffect-hook/)
 - [How to use React Ref](https://www.robinwieruch.de/react-ref/)
+  - The useRef Hook returns us a mutable object which stays intact over the lifetime of a React component. Specifically, the returned object has a current property which can hold any modifiable value for us:
 - [Computed Properties in React](https://www.robinwieruch.de/react-computed-properties/)
 - [How to create Redux with React Hooks?](https://www.robinwieruch.de/redux-with-react-hooks/)
 - [React State Hooks: useReducer, useState, useContext](https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/)
