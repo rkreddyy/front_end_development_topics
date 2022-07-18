@@ -33,6 +33,8 @@ Most native React form components support both controlled and uncontrolled usage
 - [How to fetch data with React Hooks](https://www.robinwieruch.de/react-hooks-fetch-data/)
 - [Why React Hooks over HOCs](https://www.robinwieruch.de/react-hooks-higher-order-components/)
 - [React State Hooks: useReducer, useState, useContext](https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/)
+- [React Redux Tutorial for Beginners](https://www.robinwieruch.de/react-redux-tutorial/)
 - [How to create Redux with React Hooks?](https://www.robinwieruch.de/redux-with-react-hooks/)
+- [A Firebase in React Tutorial for Beginners [2019]](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/)
 - [React Libraries for 2022](https://www.robinwieruch.de/react-libraries/)
 - [A complete React with GraphQL Tutorial](https://www.robinwieruch.de/react-with-graphql-tutorial/)
