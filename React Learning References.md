@@ -1,3 +1,4 @@
+- Redux time travel debugging.
 - [JavaScript fundamentals before learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements/)
 - [How to CSS Style in React](https://www.robinwieruch.de/react-css-styling/)
 - [React Styled Components Tutorial](https://www.robinwieruch.de/react-styled-components/)
