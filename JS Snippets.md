@@ -18,3 +18,12 @@ hello();
 // prints window object
 ```
 
+#### Insert an element into an array at a given index.
+
+```
+const numbers = [1,2,4];
+const index = 2;
+
+const finalNumbers = [...numbers.slice(0, index), 3, ...numbers.slice(index)];
+console.log(finalNumbers);
+```
