@@ -1,4 +1,7 @@
 - [Setup modern JS projects](https://www.robinwieruch.de/javascript-project-setup-tutorial/)
+- Higher Order Functions
+  - Higher Orders Functions are functions that perform operations on other functions. In this definition, operations can mean taking one or more functions as an argument OR returning a function as the result. It doesn't have to do both. Doing one or the other qualifies a function as a higher order function.
+  - Examples: map, filter, reduce, setTimeout etc.
 - Functions are first-class citizens in JavaScript
 - bind(), apply(), and call()
 - scopes and closures
