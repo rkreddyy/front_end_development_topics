@@ -1,5 +1,12 @@
 # Cypress
 
+Cypress is a next generation front end testing tool built for the modern web.
+Cypress can test anything that runs in a browser.
+Cypress enables you to write all types of tests:
+  - End-to-end tests
+  - Integration tests
+  - Unit tests
+
 ## Cypress features
 Cypress comes fully baked, batteries included. Here is a list of things it can do that no other testing framework can:
 
