@@ -263,7 +263,7 @@ const Welcome = (props) => {
 // Message prints title "React"
 ```
 
-### What will the following component output?
+### Children prop
 The children prop in React can be used for composing React components into each other. Because of this feature, you can put JavaScript primitives or JSX between the opening and closing element's tags:
 ```
 import * as React from 'react';
