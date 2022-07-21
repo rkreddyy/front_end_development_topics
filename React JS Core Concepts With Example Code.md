@@ -515,9 +515,8 @@ HelloWorldComponent.propTypes = {
 }
 
 export default HelloWorldComponent
-```
-##### Defaulr props
-```
+
+/// Default props
 class Greeting extends React.Component {
   static defaultProps = {
     name: 'stranger'
