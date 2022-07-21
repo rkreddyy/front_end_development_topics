@@ -1,4 +1,5 @@
 - Redux time travel debugging.
+- [Optimize your React app](https://web.dev/get-started-optimize-react/)
 - [JavaScript fundamentals before learning React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements/)
 - [How to CSS Style in React](https://www.robinwieruch.de/react-css-styling/)
 - [React Styled Components Tutorial](https://www.robinwieruch.de/react-styled-components/)
