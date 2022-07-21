@@ -1,5 +1,24 @@
 # React JS Core Concepts With Example Code
 
+### Code splitting with React.lazy and Suspense
+```
+import React, { lazy, Suspense } from 'react';
+
+const AvatarComponent = lazy(() => import('./AvatarComponent'));
+const InfoComponent = lazy(() => import('./InfoComponent'));
+const MoreInfoComponent = lazy(() => import('./MoreInfoComponent'));
+
+const renderLoader = () => <p>Loading</p>;
+
+const DetailsComponent = () => (
+  <Suspense fallback={renderLoader()}>
+    <AvatarComponent />
+    <InfoComponent />
+    <MoreInfoComponent />
+  </Suspense>
+)
+```
+
 ### Custom hook that detects whether you are online or offline
 ```
 import React from 'react';
