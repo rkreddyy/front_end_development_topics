@@ -528,6 +528,14 @@ class Greeting extends React.Component {
     )
   }
 }
+
+// Function component
+function Greeting({ name }) {
+  return <div>Hello, {name}</div>;
+}
+Greeting.defaultProps = {
+  name: "stranger"
+};
 ```
 
 
