@@ -16,4 +16,8 @@ console.log(global.sayHello); // undefined
   // contents from the file placed here before executing the file
 })
 ```
+- Tuples
+- Generics
+- Type narrowing
+- any vs unknown
 - 
