@@ -44,6 +44,8 @@ let textBox: UiWidget = {
   resize: () => {}
 }
 ```
+- Literal Types
+- Nullable Types
 - Tuples
 - Generics
 - any vs unknown
