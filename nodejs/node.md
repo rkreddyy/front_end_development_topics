@@ -27,6 +27,23 @@ function kgToLbs(weight: number | string): number{
 console.log( kgToLbs(10));
 console.log(kgToLbs('10Kg'));
 ```
+- Type Intersection
+```
+type Draggable = {
+  drag: () => void;
+}
+
+type Resizable = {
+  resize: () => void;
+}
+
+type UiWidget = Draggable & Resizable;
+
+let textBox: UiWidget = {
+  drag: () => {},
+  resize: () => {}
+}
+```
 - Tuples
 - Generics
 - any vs unknown
