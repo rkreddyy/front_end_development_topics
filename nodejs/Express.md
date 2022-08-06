@@ -236,3 +236,39 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 ```
 
+#### [Using template engines with Express](https://expressjs.com/en/guide/using-template-engines.html)
+#### [Production best practices: performance and reliability](https://expressjs.com/en/advanced/best-practice-performance.html)
+**Things to do in your code (the dev part):**
+- Use gzip compression
+- Don’t use synchronous functions
+- Do logging correctly
+- Handle exceptions properly
+
+**Things to do in your environment / setup (the ops part):**
+- Set NODE_ENV to “production”
+- Ensure your app automatically restarts
+- Run your app in a cluster
+- Cache request results
+- Use a load balancer
+- Use a reverse proxy
+
+#### [Production Best Practices: Security](https://expressjs.com/en/advanced/best-practice-security.html)
+Security best practices for Express applications in production include:
+- Don’t use deprecated or vulnerable versions of Express
+- Use TLS
+- Use Helmet
+- Use cookies securely
+- Prevent brute-force attacks against authorization
+- Ensure your dependencies are secure
+- Avoid other known vulnerabilities
+- Additional considerations
+   
+   Here are some further recommendations from the excellent [Node.js Security Checklist](https://blog.risingstack.com/node-js-security-checklist/). Refer to that blog post for all the details on these recommendations:
+  - Use [csurf](https://www.npmjs.com/package/csurf) middleware to protect against cross-site request forgery (CSRF).
+  - Always filter and sanitize user input to protect against cross-site scripting (XSS) and command injection attacks.
+  - Defend against SQL injection attacks by using parameterized queries or prepared statements.
+  - Use the open-source [sqlmap](http://sqlmap.org/) tool to detect SQL injection vulnerabilities in your app.
+  - Use the [nmap](https://expressjs.com/en/advanced/best-practice-security.html#:~:text=Use%20the-,nmap,-and%20sslyze%20tools) and [sslyze](https://github.com/nabla-c0d3/sslyze) tools to test the configuration of your SSL ciphers, keys, and renegotiation as well as the validity of your certificate.
+  - Use [safe-regex](https://www.npmjs.com/package/safe-regex) to ensure your regular expressions are not susceptible to [regular expression denial of service](https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS) attacks. 
+
+
