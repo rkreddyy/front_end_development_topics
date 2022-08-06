@@ -92,20 +92,20 @@ console.log(global.sayHello); // undefined
 #### 
 
 ## Q&A
-###### For which kind of apllications Node is best suited for?
+##### For which kind of apllications Node is best suited for?
 It is ideal to use Node.js for developing streaming or event-based real-time applications that require less CPU usage such as chat apps, game servers, collaborate env apps, Advertisement servers, streaming servers. 
 
-###### What is the difference between process.nextTick() and setImmediate()? 
+##### What is the difference between process.nextTick() and setImmediate()? 
 A function passed to process.nextTick() is going to be executed on the current iteration of the event loop, after the current operation ends. This means it will always execute before setTimeout and setImmediate.
 
 A setTimeout() callback with a 0ms delay is very similar to setImmediate(). The execution order will depend on various factors, but they will be both run in the next iteration of the event loop.
 
-###### [How to solve “Process out of Memory Exception” in Node.js](https://www.geeksforgeeks.org/how-to-solve-process-out-of-memory-exception-in-node-js/#:~:text=Process%20out%20of%20Memory%20Exception%20is%20an%20exception%20that%20occurs,by%20our%20program%20while%20execution.)
+##### [How to solve “Process out of Memory Exception” in Node.js](https://www.geeksforgeeks.org/how-to-solve-process-out-of-memory-exception-in-node-js/#:~:text=Process%20out%20of%20Memory%20Exception%20is%20an%20exception%20that%20occurs,by%20our%20program%20while%20execution.)
 Process out of Memory Exception is an exception that occurs when your node.js program gets out of memory. This happens when the default memory allocated to our program gets exceeded by our program while execution. 
 
 `node --max-old-space-size=<SPACE_REQUIRED> index.js`
 
-###### How many types of streams are present in node.js?
+##### How many types of streams are present in node.js?
 Streams are objects that let you read data from a source or write data to a destination in continuous fashion. There are four types of streams 
 
 1. Readable − Stream which is used for read operation. 
@@ -113,7 +113,7 @@ Streams are objects that let you read data from a source or write data to a dest
 3. Duplex − Stream which can be used for both read and write operation. 
 4. Transform − A type of duplex stream where the output is computed based on input. 
 
-Each type of Stream is an EventEmitter instance and throws several events at different instance of times. 
+Each type of Stream is an instance of EventEmitter and throws several events at different instance of times. 
 
 - data − This event is fired when there is data is available to read. 
 - end − This event is fired when there is no more data to read. 
