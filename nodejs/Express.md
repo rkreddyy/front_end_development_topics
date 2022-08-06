@@ -134,6 +134,8 @@ An Express application can use the following types of middleware:
 - Error-handling middleware
 - Built-in middleware
 - Third-party middleware
+
+
 **Application-level middleware**
 Bind application-level middleware to an instance of the app object by using the app.use() and app.METHOD() functions, where METHOD is the HTTP method of the request that the middleware function handles (such as GET, PUT, or POST) in lowercase.
 This example shows a middleware function with no mount path. The function is executed every time the app receives a request.
@@ -159,6 +161,7 @@ app.get('/user/:id', (req, res, next) => {
   res.send('USER')
 })
 ```
+
 **Router-level middleware**
 Router-level middleware works in the same way as application-level middleware, except it is bound to an instance of express.Router().
 ```
@@ -201,6 +204,7 @@ router.get('/user/:id', (req, res, next) => {
 // mount the router on the app
 app.use('/', router)
 ```
+
 **Error-handling middleware**
 Error-handling middleware always takes four arguments. You must provide four arguments to identify it as an error-handling middleware function. Even if you don’t need to use the next object, you must specify it to maintain the signature. Otherwise, the next object will be interpreted as regular middleware and will fail to handle errors.
 Define error-handling middleware functions in the same way as other middleware functions, except with four arguments instead of three, specifically with the signature (err, req, res, next)):
@@ -210,10 +214,13 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 ```
+
 **Built-in middleware**
 - [express.static](https://expressjs.com/en/4x/api.html#express.static) serves static assets such as HTML files, images, and so on.
 - [express.json](https://expressjs.com/en/4x/api.html#express.json) parses incoming requests with JSON payloads. NOTE: Available with Express 4.16.0+
 - [express.urlencoded](https://expressjs.com/en/4x/api.html#express.urlencoded) parses incoming requests with URL-encoded payloads. NOTE: Available with Express 4.16.0+
+
+
 **Third-party middleware**
 Use third-party middleware to add functionality to Express apps.
 Install the Node.js module for the required functionality, then load it in your app at the application level or at the router level.
@@ -228,3 +235,4 @@ const cookieParser = require('cookie-parser')
 // load the cookie-parsing middleware
 app.use(cookieParser())
 ```
+
