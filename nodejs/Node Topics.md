@@ -146,4 +146,18 @@ readerStream.on('error', function(err) {
 console.log("Program Ended"); 
 ```
 
+##### Being a single threaded platform, how does Node.js support multi-processor platforms to fully utilize all processor resources? 
+[Cluster](https://nodejs.org/api/cluster.html#cluster_cluster) is the official way. We can create as many virtual instances of a node server with as many CPU-cores as the machine has. Work arounds for the single-threaded event loop (unique to Node) are child_process (official Node practice), and task queues like Rabbit MQ. But, taking advantage of a multi-core machine, creating a Node Cluster is the official way.
+
+##### How can you secure HTTP cookies against XSS attacks? 
+- When the web server sets cookies, it can provide some additional attributes to make sure the cookies won't be accessible by using malicious JavaScript. One such attribute is HttpOnly. 
+`Set-Cookie: [name]=[value]; HttpOnly`.
+HttpOnly makes sure the cookies will be submitted only to the domain they originated from. 
+- The "Secure" attribute can make sure the cookies are sent over secured channel only. 
+`Set-Cookie: [name]=[value]; Secure`.
+- The web server can use X-XSS-Protection response header to make sure pages do not load when they detect reflected cross-site scripting (XSS) attacks. 
+ `X-XSS-Protection: 1; mode=block`.
+- The web server can use HTTP Content-Security-Policy response header to control what resources a user agent is allowed to load for a certain page. It can help to prevent various types of attacks like Cross Site Scripting (XSS) and data injection attacks. 
+ `Content-Security-Policy: default-src 'self' *.http://sometrustedwebsite.com`.
+ 
 
