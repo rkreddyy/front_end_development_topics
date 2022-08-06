@@ -1,3 +1,4 @@
+
 - Local variables and functions are not added to `global` scope in node.js
 ```
 function sayHello(name){
