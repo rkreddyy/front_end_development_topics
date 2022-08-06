@@ -271,4 +271,7 @@ Security best practices for Express applications in production include:
   - Use the [nmap](https://expressjs.com/en/advanced/best-practice-security.html#:~:text=Use%20the-,nmap,-and%20sslyze%20tools) and [sslyze](https://github.com/nabla-c0d3/sslyze) tools to test the configuration of your SSL ciphers, keys, and renegotiation as well as the validity of your certificate.
   - Use [safe-regex](https://www.npmjs.com/package/safe-regex) to ensure your regular expressions are not susceptible to [regular expression denial of service](https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS) attacks. 
 
+#### [Health Checks and Graceful Shutdown](https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html)
+#### [Process managers for Express apps](https://expressjs.com/en/advanced/pm.html)
+
 
