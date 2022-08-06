@@ -30,6 +30,6 @@ let textBox: UiWidget = {
 - Nullable Types
 - Tuples
 - Generics
-- Attributes
+- Decorator
 - Mixins
 - any vs unknown
