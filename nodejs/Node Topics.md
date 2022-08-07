@@ -69,6 +69,7 @@ Use nextTick() when you want to make sure that in the next event loop iteration 
 #### [The Node.js http module](https://nodejs.dev/learn/the-nodejs-http-module)
 #### [Node.js Buffers](https://nodejs.dev/learn/nodejs-buffers)
 #### [Node.js Streams](https://nodejs.dev/learn/nodejs-streams)
+#### [Cluster](https://nodejs.org/api/cluster.html)
 #### [How to read environment variables from Node.js](https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs)
 #### [Guides - Official Docs](https://nodejs.org/en/docs/guides/)
 #### Local variables and functions are not added to `global` scope in node.js
