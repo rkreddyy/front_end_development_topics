@@ -20,7 +20,16 @@
      private makeRequest() {...}
      protected handleRequest() {...}
     ```
- 
+    - Abstract Classes: A class can be declared as not implementable, but as existing to be subclassed in the type system. As can members of the class.
+    ```
+    abstract class Animal {
+     abstract getName(): string;
+     printName() {
+      console.log("Hello, " + this.getName());
+     }
+    }
+    class Dog extends Animal { getName(): { ... } }
+    ```
   - Nullable Types
   - Generics
     - Declare a type which can change in your class methods.
@@ -35,7 +44,26 @@
      const stringBox = new Box("a package");
      const intBox = new Box<number>(1);
      ```
-  - Decorator
+  - [Decorators and Attributes](https://www.typescriptlang.org/docs/handbook/decorators.html): 
+    A Decorator is a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter. Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
+    ```
+    // The following is an example of a class decorator (@sealed) applied to a BugReport class:
+    @sealed
+    class BugReport {
+      type = "report";
+      title: string;
+
+      constructor(t: string) {
+        this.title = t;
+      }
+    }
+    
+    // We can define the @sealed decorator using the following function declaration:
+    function sealed(constructor: Function) {
+      Object.seal(constructor);
+      Object.seal(constructor.prototype);
+    }
+    ```
   - Mixins
   - any vs unknown
 - Type narrowing Example(Union Types)
