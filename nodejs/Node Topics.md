@@ -268,7 +268,7 @@ HttpOnly makes sure the cookies will be submitted only to the domain they origin
  `Content-Security-Policy: default-src 'self' *.http://sometrustedwebsite.com`.
  
 ##### How to load an ES module in node? 
-set `"type": "module"` in the package.json to use `import` syntax - `import http from 'http';`
-set `"type": ""commonjs"` to use `require` syntax - `const http = require('http');`
+- set `"type": "module"` in the package.json to use `import` syntax - `import http from 'http';`
+- set `"type": ""commonjs"` to use `require` syntax - `const http = require('http');`
 
 
