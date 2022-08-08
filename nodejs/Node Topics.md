@@ -177,7 +177,7 @@ We recommend developers use setImmediate() in all cases because it's easier to r
 #### [Node.js Streams](https://nodejs.dev/learn/nodejs-streams)
 #### [Cluster](https://nodejs.org/api/cluster.html)
 #### [How to read environment variables from Node.js](https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs)
-#### [Guides - Official Docs](https://nodejs.org/en/docs/guides/)
+#### [NodeJS Learn - Official](https://nodejs.dev/learn)
 #### Local variables and functions are not added to `global` scope in node.js
 ```
 function sayHello(name){
