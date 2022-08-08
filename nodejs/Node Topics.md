@@ -178,7 +178,7 @@ We recommend developers use setImmediate() in all cases because it's easier to r
 #### [Cluster](https://nodejs.org/api/cluster.html)
 #### [How to read environment variables from Node.js](https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs)
 #### [Crypto](https://nodejs.org/docs/latest-v17.x/api/crypto.html)
-      The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
 #### [NodeJS Learn - Official](https://nodejs.dev/learn)
 
