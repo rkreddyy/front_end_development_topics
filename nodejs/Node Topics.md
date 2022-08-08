@@ -267,4 +267,10 @@ HttpOnly makes sure the cookies will be submitted only to the domain they origin
 - The web server can use HTTP Content-Security-Policy response header to control what resources a user agent is allowed to load for a certain page. It can help to prevent various types of attacks like Cross Site Scripting (XSS) and data injection attacks. 
  `Content-Security-Policy: default-src 'self' *.http://sometrustedwebsite.com`.
  
+##### How to load an ES module in node? 
+set "type": "module" in the package.json;
+`import http from 'http';`
+set "type": ""commonjs" to use require syntax;
+`const http = require('http');`
+
 
