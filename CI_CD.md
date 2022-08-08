@@ -1,6 +1,6 @@
 # Continuous Integration/ Delivery/ Deployment
 
-### Most of the CI/CD pipelines will have seven steps. Below steps gives an idea of the building blocks of a typical CICD pipeline.
+### Most of the CI/CD pipelines will have the following steps. Below steps gives an idea of the building blocks of a typical CICD pipeline.
 - We'll trigger the pipeline by pushing an update to the Git repository where the application code is stored. 
 - Or, in some cases, we may trigger the pipeline manually if needed. 
 - In the first two stages, we'll put any required libraries in place and do a sanity check. 
