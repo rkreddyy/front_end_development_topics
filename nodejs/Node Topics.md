@@ -84,6 +84,59 @@ We can import the REPL in a JavaScript file using repl.
 Using the repl variable we can perform various operations. To start the REPL command prompt, type in the following line.
 ```repl.start();```
 
+#### setImmediate() vs setTimeout()
+`setImmediate()` and `setTimeout()` are similar, but behave in different ways depending on when they are called.
+
+- `setImmediate()` is designed to execute a script once the current poll phase completes (after all IO callbacks are executed).
+- `setTimeout()` schedules a script to be run after a minimum threshold in ms has elapsed.
+- 
+The order in which the timers are executed will vary depending on the context in which they are called. If both are called from within the main module, then timing will be bound by the performance of the process (which can be impacted by other applications running on the machine).
+
+For example, if we run the following script which is not within an I/O cycle (i.e. the main module), the order in which the two timers are executed is non-deterministic, as it is bound by the performance of the process:
+
+```
+// timeout_vs_immediate.js
+setTimeout(() => {
+  console.log('timeout');
+}, 0);
+
+setImmediate(() => {
+  console.log('immediate');
+});
+
+$ node timeout_vs_immediate.js
+// timeout
+// immediate
+
+// $ node timeout_vs_immediate.js
+// immediate
+// timeout
+```
+
+However, if you move the two calls within an I/O cycle, the immediate callback is always executed first:
+```
+// timeout_vs_immediate.js
+const fs = require('fs');
+
+fs.readFile(__filename, () => {
+  setTimeout(() => {
+    console.log('timeout');
+  }, 0);
+  setImmediate(() => {
+    console.log('immediate');
+  });
+});
+
+$ node timeout_vs_immediate.js
+// immediate
+// timeout
+
+// $ node timeout_vs_immediate.js
+// immediate
+// timeout
+```
+The main advantage to using setImmediate() over setTimeout() is setImmediate() will always be executed before any timers if scheduled within an I/O cycle, independently of how many timers are present.
+
 #### Understanding process.nextTick()
 As you try to understand the Node.js event loop, one important part of it is process.nextTick().
 
@@ -105,6 +158,17 @@ Calling setTimeout(() => {}, 0) will execute the function at the end of next tic
 
 Use nextTick() when you want to make sure that in the next event loop iteration that code is already executed.
 
+#### process.nextTick() vs setImmediate()
+We have two calls that are similar as far as users are concerned, but their names are confusing.
+
+`process.nextTick()` fires immediately on the same phase
+`setImmediate()` fires on the following iteration or 'tick' of the event loop
+In essence, the names should be swapped. `process.nextTick()` fires more immediately than `setImmediate()`, but this is an artifact of the past which is unlikely to change. Making this switch would break a large percentage of the packages on npm. Every day more new modules are being added, which means every day we wait, more potential breakages occur. While they are confusing, the names themselves won't change.
+
+We recommend developers use setImmediate() in all cases because it's easier to reason about.
+
+
+#### [Why use process.nextTick()?](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#why-use-process-nexttick)
 #### [The Node.js fs module](https://nodejs.dev/learn/the-nodejs-fs-module)
 #### [The Node.js os module](https://nodejs.dev/learn/the-nodejs-os-module)
 #### [The Node.js events module](https://nodejs.dev/learn/the-nodejs-events-module)
