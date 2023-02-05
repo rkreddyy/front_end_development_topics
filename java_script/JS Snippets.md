@@ -27,3 +27,22 @@ const index = 2;
 const finalNumbers = [...numbers.slice(0, index), 3, ...numbers.slice(index)];
 console.log(finalNumbers);
 ```
+
+#### The for..in loop iterates over inherited properties too, but Object.keys does not
+
+```
+let animal = {
+  eats: true
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+// Object.keys only returns own keys
+alert(Object.keys(rabbit)); // jumps
+
+// for..in loops over both own and inherited keys
+for(let prop in rabbit) alert(prop); // jumps, then eats
+```
