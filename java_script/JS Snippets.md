@@ -46,3 +46,24 @@ alert(Object.keys(rabbit)); // jumps
 // for..in loops over both own and inherited keys
 for(let prop in rabbit) alert(prop); // jumps, then eats
 ```
+###### We can filter out inherited properties (or do something else with them):
+```
+let animal = {
+  eats: true
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal
+};
+
+for(let prop in rabbit) {
+  let isOwn = rabbit.hasOwnProperty(prop);
+
+  if (isOwn) {
+    alert(`Our: ${prop}`); // Our: jumps
+  } else {
+    alert(`Inherited: ${prop}`); // Inherited: eats
+  }
+}
+```
