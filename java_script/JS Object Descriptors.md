@@ -33,6 +33,15 @@ user.name = "Pete"; // Error: Cannot assign to read only property 'name'
 delete user.name won't work either - non configurable
 ```
 
+```
+// Define all properties at once
+Object.defineProperties(user, {
+  name: { value: "John", writable: false },
+  surname: { value: "Smith", writable: false },
+  // ...
+});
+```
+
 ### Sealing an object globally
 Property descriptors work at the level of individual properties.
 
