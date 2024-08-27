@@ -1,6 +1,6 @@
 # Next.js foundations
 
-```### The React Framework for the Web. Next.js enables you to create high-quality web applications with the power of React components.```
+### ```The React Framework for the Web. Next.js enables you to create high-quality web applications with the power of React components.```
 
 ### Built-in optimizations: Automatic Image, Font, and Script Optimizations for improved UX and Core Web Vitals.
 
