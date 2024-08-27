@@ -47,6 +47,7 @@ The RSC Payload contains:
  - Placeholders for where Client Components should be rendered and references to their JavaScript files
  - Any props passed from a Server Component to a Client Component
 
+### Client side and Server side rendering: Flexible rendering and caching options, including Incremental Static Regeneration (ISR), on a per-page level.
 ### React Server Components: Add components without sending additional client-side JavaScript. Built on the latest React features.
 Rendering converts the code you write into user interfaces. React and Next.js allow you to create hybrid web applications where parts of your code can be rendered on the server or the client.
 
@@ -209,18 +210,35 @@ On the next subsequent request, Next.js will retry revalidating the data.
 
 ### CSS support
 Style your application with your favorite tools, including support for CSS Modules, Tailwind CSS, and popular community libraries.
+Next.js supports different ways of styling your application, including:
 
-### Client side and Server side rendering
-Flexible rendering and caching options, including Incremental Static Regeneration (ISR), on a per-page level.
-
-### Server Actions
-Run server code by calling a function. Skip the API. Then, easily revalidate cached data and update your UI in one network roundtrip.
+- CSS Modules: Create locally scoped CSS classes to avoid naming conflicts and improve maintainability.
+- Global CSS: Simple to use and familiar for those experienced with traditional CSS, but can lead to larger CSS bundles and difficulty managing styles as the application grows.
+- Tailwind CSS: A utility-first CSS framework that allows for rapid custom designs by composing utility classes.
+- Sass: A popular CSS preprocessor that extends CSS with features like variables, nested rules, and mixins.
+- CSS-in-JS: Embed CSS directly in your JavaScript components, enabling dynamic and scoped styling.
 
 ### Route handlers
 Build API endpoints to securely connect with third-party services for handling auth or listening for webhooks.
+Route Handlers allow you to create custom request handlers for a given route using the Web Request and Response APIs.
+Route Handlers are defined in a route.js|ts file inside the app directory:
+```export async function GET(request: Request) {}```
+
+The following HTTP methods are supported: GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS. If an unsupported method is called, Next.js will return a 405 Method Not Allowed response.
 
 ### Advanced routing and nested layout
 Create routes using the file system, including support for more advanced routing patterns and UI layouts.
 
 ### Middleware
 Take control of the incoming request. Use code to define routing and access rules for authentication, experimentation, and internationalization.
+Middleware allows you to run code before a request is completed. 
+Then, based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response headers, or responding directly.
+
+##### Use cases
+- Authentication and Authorization: Ensure user identity and check session cookies before granting access to specific pages or API routes.
+- Server-Side Redirects: Redirect users at the server level based on certain conditions (e.g., locale, user role).
+- Path Rewriting: Support A/B testing, feature rollouts, or legacy paths by dynamically rewriting paths to API routes or pages based on request properties.
+- Bot Detection: Protect your resources by detecting and blocking bot traffic.
+- Logging and Analytics: Capture and analyze request data for insights before processing by the page or API.
+- Feature Flagging: Enable or disable features dynamically for seamless feature rollouts or testing.
+
