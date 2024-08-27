@@ -83,8 +83,129 @@ In Next.js, the rendering work is further split by route segments to enable stre
    Work is split into chunks and streamed to the client as it becomes ready.
    This allows the user to see parts of the page immediately, before the entire content has finished rendering.
 
+#### 2. Client Components
+Client Components allow you to write interactive UI that is prerendered on the server and can use client JavaScript to run in the browser.
+There are a couple of benefits to doing the rendering work on the client, including:
+1. Interactivity: Client Components can use state, effects, and event listeners, meaning they can provide immediate feedback to the user and update the UI.
+2. Browser APIs: Client Components have access to browser APIs, like geolocation or localStorage.
+
+To use Client Components, you can add the React "use client" directive at the top of a file, above your imports.
+```
+'use client' 
+import { useState } from 'react'
+ 
+export default function Counter() {
+  const [count, setCount] = useState(0) 
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
 ### Data fetching
 Make your React component async and await your data. Next.js supports both server and client data fetching.
+
+#### Fetching data on the server with the fetch API
+This component will fetch and display a list of blog posts. The response from fetch will be automatically cached.
+```
+export default async function Page() {
+  let data = await fetch('https://api.vercel.app/blog')
+  let posts = await data.json()
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  )
+}
+```
+If you are not using any dynamic functions anywhere else in your application, this page will be prerendered during next build to a static page. 
+If you do not want to cache the response from fetch, you can do the following:
+```let data = await fetch('https://api.vercel.app/blog', { cache: 'no-store' })```
+
+#### Fetching data on the client
+You can manually call fetch in a useEffect (not recommended), or lean on popular React libraries in the community (such as SWR or React Query) for client fetching.
+
+#### Server Actions and Mutations
+Server Actions are asynchronous functions that are executed on the server. They can be called in Server and Client Components to handle form submissions and data mutations in Next.js applications.
+
+A Server Action can be defined with the React "use server" directive.
+You can place the directive at the top of an async function to mark the function as a Server Action, or at the top of a separate file to mark all exports of that file as Server Actions.
+
+```
+export default function Page() {
+  // Server Action
+  async function create() {
+    'use server'
+    // Mutate data
+  }
+ 
+  return '...'
+}
+```
+
+#### Incremental Static Regeneration (ISR)
+Incremental Static Regeneration (ISR) enables you to:
+- Update static content without rebuilding the entire site
+- Reduce server load by serving prerendered, static pages for most requests
+- Ensure proper cache-control headers are automatically added to pages
+- Handle large amounts of content pages without long next build times
+
+##### Time-based revalidation
+This fetches and displays a list of blog posts on /blog. After an hour, the cache for this page is invalidated on the next visit to the page. 
+Then, in the background, a new version of the page is generated with the latest blog posts.
+```
+export const revalidate = 3600 // invalidate every hour
+ 
+export default async function Page() {
+  let data = await fetch('https://api.vercel.app/blog')
+  let posts = await data.json()
+  return (
+    <main>
+      <h1>Blog Posts</h1>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </main>
+  )
+}
+```
+
+##### On-demand revalidation with revalidatePath
+For a more precise method of revalidation, invalidate pages on-demand with the revalidatePath function.
+```
+'use server'
+ 
+import { revalidatePath } from 'next/cache'
+ 
+export async function createPost() {
+  // Invalidate the /posts route in the cache
+  revalidatePath('/posts')
+}
+```
+
+##### On-demand revalidation with revalidateTag
+For most use cases, prefer revalidating entire paths. If you need more granular control, you can use the revalidateTag function.
+For example, you can tag individual fetch calls:
+```
+export default async function Page() {
+  let data = await fetch('https://api.vercel.app/blog', {
+    next: { tags: ['posts'] },
+  })
+  let posts = await data.json()
+  // ...
+}
+```
+
+##### Handling uncaught exceptions
+If an error is thrown while attempting to revalidate data, the last successfully generated data will continue to be served from the cache.
+On the next subsequent request, Next.js will retry revalidating the data.
 
 ### CSS support
 Style your application with your favorite tools, including support for CSS Modules, Tailwind CSS, and popular community libraries.
