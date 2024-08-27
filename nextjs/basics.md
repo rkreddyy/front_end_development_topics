@@ -5,6 +5,13 @@
 ### Built-in optimizations
 Automatic Image, Font, and Script Optimizations for improved UX and Core Web Vitals.
 
+The Next.js Image component extends the HTML <img> element with features for automatic image optimization:
+
+- Size Optimization: Automatically serve correctly sized images for each device, using modern image formats like WebP and AVIF.
+- Visual Stability: Prevent layout shift automatically when images are loading.
+- Faster Page Loads: Images are only loaded when they enter the viewport using native browser lazy loading, with optional blur-up placeholders.
+- Asset Flexibility: On-demand image resizing, even for images stored on remote servers
+
 ### Dynamic HTML streaming
 Instantly stream UI from the server, integrated with the App Router and React Suspense.
 
