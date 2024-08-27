@@ -39,15 +39,49 @@ To hydrate your app, React will “attach” your components’ logic to the ini
 Hydration turns the initial HTML snapshot from the server into a fully interactive app that runs in the browser.
 Hydration is the process of attaching event listeners to the DOM, to make the static HTML interactive.
 
-`The RSC Payload is a compact binary representation of the rendered React Server Components tree`
+`The RSC Payload is a compact binary representation of the rendered React Server Components tree.`
+
 It's used by React on the client to update the browser's DOM. 
 The RSC Payload contains:
  - The rendered result of Server Components
  - Placeholders for where Client Components should be rendered and references to their JavaScript files
  - Any props passed from a Server Component to a Client Component
 
-### React Server Components
-Add components without sending additional client-side JavaScript. Built on the latest React features.
+### React Server Components: Add components without sending additional client-side JavaScript. Built on the latest React features.
+Rendering converts the code you write into user interfaces. React and Next.js allow you to create hybrid web applications where parts of your code can be rendered on the server or the client.
+
+#### 1. Server Components
+React Server Components allow you to write UI that can be rendered and optionally cached on the server. 
+Benifits of server rendering:
+- Data Fetching
+- Security
+- Caching
+- Performance
+- Initial Page Load and First Contentful Paint (FCP)
+- Search Engine Optimization and Social Network Shareability
+- Streaming
+
+On the server, Next.js uses React's APIs to orchestrate rendering. The rendering work is split into chunks: by individual route segments and Suspense Boundaries.
+Each chunk is rendered in two steps:
+1. React renders Server Components into a special data format called the React Server Component Payload (RSC Payload).
+2. Next.js uses the RSC Payload and Client Component JavaScript instructions to render HTML on the server.
+Then, on the client:
+1. The HTML is used to immediately show a fast non-interactive preview of the route - this is for the initial page load only.
+2. The React Server Components Payload is used to reconcile the Client and Server Component trees, and update the DOM.
+3. The JavaScript instructions are used to hydrate Client Components and make the application interactive.
+   
+In Next.js, the rendering work is further split by route segments to enable streaming and partial rendering, and there are three different server rendering strategies:
+1. Static Rendering (Default):
+   With Static Rendering, routes are rendered at build time, or in the background after data revalidation.
+   The result is cached and can be pushed to a Content Delivery Network (CDN). This optimization allows you to share the result of the rendering work between users and server requests.
+   Static rendering is useful when a route has data that is not personalized to the user and can be known at build time, such as a static blog post or a product page.
+2. Dynamic Rendering
+   With Dynamic Rendering, routes are rendered for each user at request time.
+   Dynamic rendering is useful when a route has data that is personalized to the user or has information that can only be known at request time, such as cookies or the URL's search params.
+3. Streaming
+   Streaming enables you to progressively render UI from the server.
+   Work is split into chunks and streamed to the client as it becomes ready.
+   This allows the user to see parts of the page immediately, before the entire content has finished rendering.
 
 ### Data fetching
 Make your React component async and await your data. Next.js supports both server and client data fetching.
